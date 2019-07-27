@@ -36,6 +36,8 @@ class Disease {
             Diseases.CHOKING -> choking.put(player, 1)
         }
 
+        //lol
+
     }
 
     fun removePlayer(player: String, diseaseType: Diseases) {

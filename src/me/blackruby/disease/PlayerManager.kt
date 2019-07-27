@@ -39,15 +39,6 @@ class Player {
         return severity
     }
 
-    fun checkPermission(player: Player, permission: String, negate: Boolean) {
-
-        when (negate) {
-            true -> if(!player.hasPermission(permission)) return
-            false -> if(player.hasPermission(permission)) return
-        }
-
-    }
-
     fun checkPosition(player: Player): Position {
 
         for(i in 1..20) {

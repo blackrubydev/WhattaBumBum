@@ -57,32 +57,25 @@ class Disease {
         return Time.DAY
     }
 
-    fun isContagious(disease: Diseases): Boolean {
-
+    fun isContagious(disease: Diseases) =
         when(disease) {
-            Diseases.COLD -> return true
+            Diseases.COLD -> true
+            else -> false
         }
-
-        return false
-    }
 
     private fun contract(chance: Int): Boolean {
 
         if(chance == 0) return false
 
-        var random = (1..(chance + 1)).random()
-        if (random == 1) {
-            return true
-        }
-
-        return false
+        val random = (1..(chance + 1)).random()
+        return random == 1
     }
 
     fun infectPlayerNearby(player: org.bukkit.entity.Player?, diseaseType: Diseases, chance: Int) {
 
-        var nearby: List<Entity>? = player?.getNearbyEntities(5.0, 5.0, 5.0)
-
         if(isContagious(diseaseType) != true) return
+
+        val nearby: List<Entity>? = player?.getNearbyEntities(5.0, 5.0, 5.0)
         if(nearby == null) return
 
         for(entity in nearby) {

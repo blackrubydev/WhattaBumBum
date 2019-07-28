@@ -9,6 +9,11 @@ class PlayerManager {
 
     var d = DiseaseManager()
 
+    /**
+     *  Increases the player's illness' severity by one, which makes the symptoms more severe, eventually
+     *  (if not treated) killing the player.
+     */
+
     fun increaseDiseaseSeverity(player: String, diseaseType: Disease) {
 
         when (diseaseType) {
@@ -19,6 +24,10 @@ class PlayerManager {
         }
 
     }
+
+    /**
+     *  Returns what diseases does a player have since they can have multiple of them at the same time.
+     */
 
     fun checkDisease(player: String): ArrayList<Disease>? {
 
@@ -32,12 +41,22 @@ class PlayerManager {
         return playerDiseases
     }
 
+    /**
+     *  Returns a specific player's disease's severity. It can be either 1, 2 or 3 (3 being the lethal).
+     */
+
     fun checkSeverity(player: String, disease: HashMap<String, Int>): Int {
 
         var severity = disease.get(player)!!
 
         return severity
     }
+
+    /**
+     *  Checks the player's position. If all the 20 blocks above the player equal Material.AIR then it means the player
+     *  is out in the open. This is neccessary, so that people don't get cold in their houses and they don't get
+     *  heatstrokes while isnide their homes.
+     */
 
     fun checkPosition(player: Player): Position {
 

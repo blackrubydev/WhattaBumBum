@@ -1,33 +1,33 @@
 package me.blackruby.disease
 
-import me.blackruby.disease.types.Diseases
+import me.blackruby.disease.types.Disease
 import me.blackruby.disease.types.Position
 import org.bukkit.Material
 import org.bukkit.entity.Player
 
-class Player {
+class PlayerManager {
 
-    var d = Disease()
+    var d = DiseaseManager()
 
-    fun increaseDiseaseSeverity(player: String, diseaseType: Diseases) {
+    fun increaseDiseaseSeverity(player: String, diseaseType: Disease) {
 
         when (diseaseType) {
-            Diseases.COLD -> d.cold.put(player, d.cold.get(player)!! + 1)
-            Diseases.WOUND -> d.wound.put(player, d.wound.get(player)!! + 1)
-            Diseases.BROKEN_LEG -> d.brokenLeg.put(player, d.brokenLeg.get(player)!! + 1)
-            Diseases.CHOKING -> d.choking.put(player, d.choking.get(player)!! + 1)
+            Disease.COLD -> d.cold.put(player, d.cold.get(player)!! + 1)
+            Disease.WOUND -> d.wound.put(player, d.wound.get(player)!! + 1)
+            Disease.BROKEN_LEG -> d.brokenLeg.put(player, d.brokenLeg.get(player)!! + 1)
+            Disease.CHOKING -> d.choking.put(player, d.choking.get(player)!! + 1)
         }
 
     }
 
-    fun checkDisease(player: String): ArrayList<Diseases>? {
+    fun checkDisease(player: String): ArrayList<Disease>? {
 
-        var playerDiseases: ArrayList<Diseases>? = ArrayList()
+        var playerDiseases: ArrayList<Disease>? = ArrayList()
 
-        if(d.cold.containsKey(player)) playerDiseases?.add(Diseases.COLD)
-        if(d.wound.containsKey(player)) playerDiseases?.add(Diseases.WOUND)
-        if(d.choking.containsKey(player)) playerDiseases?.add(Diseases.CHOKING)
-        if(d.brokenLeg.containsKey(player)) playerDiseases?.add(Diseases.BROKEN_LEG)
+        if(d.cold.containsKey(player)) playerDiseases?.add(Disease.COLD)
+        if(d.wound.containsKey(player)) playerDiseases?.add(Disease.WOUND)
+        if(d.choking.containsKey(player)) playerDiseases?.add(Disease.CHOKING)
+        if(d.brokenLeg.containsKey(player)) playerDiseases?.add(Disease.BROKEN_LEG)
 
         return playerDiseases
     }
